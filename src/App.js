@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
+import Modal from './components/modal/Modal';
+import Posts from './components/Posts/Posts';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+    const [modalActive, setModalActive] = useState(false)
+    return (
+
+        <div>
+            <button
+                className="glow-on-hover"
+                onClick={() => setModalActive(true)}
+            > Create post
+            </button>
+            <div className='containerr'>
+                <Posts/>
+                <Modal modalActive={modalActive} setModalActive={setModalActive}/>
+            </div>
+        </div>
+
+    );
 }
 
 export default App;
